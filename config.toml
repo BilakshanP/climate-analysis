@@ -1,0 +1,47 @@
+# Multi-city temperature & rainfall analysis
+# See HANDOFF.md for full documentation
+
+start_year = 1951
+end_year = 2025
+timezone = "UTC"
+
+# sort_by = "lat"    # "lat" (lon secondary) | "lon" (lat secondary) | omit for idx/alphabetical
+# sort_order = "asc" # "asc" (default) | "desc"
+
+[output]
+png = true
+svg = true
+png_dpi = 100
+
+# Each city needs: lat, lon
+# Optional: idx (ordering position, 1-based), color (name or #hex)
+
+[cities.London]
+lat = 51.5074
+lon = -0.1278
+color = "steelblue"
+
+# [cities.Tokyo]
+# lat = 35.6762
+# lon = 139.6503
+# color = "red"
+
+[cities.NewYork]
+lat = 40.7128
+lon = -74.006
+color = "orange"
+
+[cities.Sydney]
+lat = -33.8688
+lon = 151.2093
+color = "green"
+
+[cities.Cairo]
+lat = 30.0444
+lon = 31.2357
+color = "brown"
+
+[cities.SaoPaulo]
+lat = -23.5505
+lon = -46.6333
+color = "purple"
