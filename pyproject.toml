@@ -9,3 +9,8 @@ dependencies = [
     "pandas>=3.0.2",
     "requests>=2.33.1",
 ]
+
+[dependency-groups]
+dev = [
+    "basedpyright>=1.39.2",
+]

@@ -11,8 +11,11 @@ Defined in `config.toml`. Default set: Shimla, Manali, Kangra, Delhi, Mumbai, Be
 ```
 temperature-analysis/
 ├── config.toml             # City definitions (coords, order, colors, year range)
+├── pyrightconfig.json      # basedpyright config (basic mode, src/ only)
 ├── pyproject.toml          # uv project config (Python 3.14+)
 ├── uv.lock                 # Locked dependencies
+├── .github/workflows/
+│   └── typecheck.yml       # CI — runs basedpyright on push/PR to main
 ├── src/
 │   └── analysis.py   # Single script — data fetch/cache, stats, 8 charts
 ├── data/                        # Coordinate-based cache (auto-managed)
@@ -78,6 +81,15 @@ All three keys are optional and default to the values shown above.
 - `matplotlib` — charts
 - `requests` — API calls
 - `numpy` — linear regression for warming rate
+- `basedpyright` (dev) — static type checking
+
+## Type Checking
+
+```bash
+uv run basedpyright
+```
+
+Configured via `pyrightconfig.json` (basic mode, scoped to `src/`). Runs automatically in CI on push/PR to `main` (`.github/workflows/typecheck.yml`).
 
 ## What `analysis.py` Produces
 

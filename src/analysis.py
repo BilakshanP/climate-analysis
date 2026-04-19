@@ -69,6 +69,7 @@ def _fetch_api(lat, lon, start, end):
             "Temp Min": pd.to_numeric(d["temperature_2m_min"], errors="coerce"),
             "Rain": pd.to_numeric(d["precipitation_sum"], errors="coerce"),
         })
+    raise RuntimeError(f"API request failed after 4 attempts for ({lat}, {lon})")
 
 
 def _load_city(label, lat, lon, start_year, end_year):
@@ -336,7 +337,7 @@ ax8.set_ylabel('Days per year')
 ax8.legend()
 ax8.grid(alpha=0.3)
 
-plt.tight_layout(rect=[0, 0, 1, 0.96])
+plt.tight_layout(rect=(0, 0, 1, 0.96))
 _saved = []
 if _SAVE_PNG:
     plt.savefig('output/analysis.png', dpi=_PNG_DPI, bbox_inches='tight')
