@@ -18,4 +18,6 @@ jobs:
 
       - run: uv run ruff format --check src/
 
+      - run: uv run ruff check src/
+
       - run: uv run basedpyright
