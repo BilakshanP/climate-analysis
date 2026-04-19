@@ -16,8 +16,14 @@ jobs:
 
       - run: uv sync --dev
 
-      - run: uv run ruff format --check src/
+      - name: Format & lint fix
+        run: |
+          uv run ruff format src/
+          uv run ruff check --fix src/
 
-      - run: uv run ruff check src/
+      - name: Commit formatting changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Formatted: code with ruff"
 
       - run: uv run basedpyright
