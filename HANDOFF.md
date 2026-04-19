@@ -14,13 +14,13 @@ temperature-analysis/
 ├── pyproject.toml          # uv project config (Python 3.14+)
 ├── uv.lock                 # Locked dependencies
 ├── src/
-│   └── multi_city_analysis.py   # Single script — data fetch/cache, stats, 8 charts
+│   └── analysis.py   # Single script — data fetch/cache, stats, 8 charts
 ├── data/                        # Coordinate-based cache (auto-managed)
 │   ├── {lat}_{lon}.csv          # One CSV per coordinate pair, sorted & deduped
 │   └── ...
 └── output/                      # Generated charts
-    ├── multi_city_analysis.png
-    ├── multi_city_analysis.svg
+    ├── analysis.png
+    ├── analysis.svg
     └── temperature_analysis.png
 ```
 
@@ -31,10 +31,10 @@ temperature-analysis/
 uv sync
 
 # Run the main multi-city analysis (from project root)
-uv run src/multi_city_analysis.py
+uv run src/analysis.py
 ```
 
-On first run, `multi_city_analysis.py` fetches data from the Open-Meteo API and caches it as `data/{lat}_{lon}.csv`. Subsequent runs only fetch missing date ranges — gaps are detected by scanning the dates already present in the CSV. Rate-limited requests (429) are retried 3 times with exponential backoff (30s, 60s, 120s).
+On first run, `analysis.py` fetches data from the Open-Meteo API and caches it as `data/{lat}_{lon}.csv`. Subsequent runs only fetch missing date ranges — gaps are detected by scanning the dates already present in the CSV. Rate-limited requests (429) are retried 3 times with exponential backoff (30s, 60s, 120s).
 
 ## Configuration (`config.toml`)
 
@@ -79,7 +79,7 @@ All three keys are optional and default to the values shown above.
 - `requests` — API calls
 - `numpy` — linear regression for warming rate
 
-## What `multi_city_analysis.py` Produces
+## What `analysis.py` Produces
 
 ### Console: Summary Table
 
@@ -109,7 +109,7 @@ Transposed layout — cities as columns, stats as rows — printed as a single c
 7. **Full Temperature Range** — shaded band (min–max) per city over time
 8. **Extreme Heat Days >40°C** — 5-year rolling count per city
 
-Output: `output/multi_city_analysis.png` and `.svg`
+Output: `output/analysis.png` and `.svg`
 
 ## Data Source
 

@@ -339,11 +339,11 @@ ax8.grid(alpha=0.3)
 plt.tight_layout(rect=[0, 0, 1, 0.96])
 _saved = []
 if _SAVE_PNG:
-    plt.savefig('output/multi_city_analysis.png', dpi=_PNG_DPI, bbox_inches='tight')
-    _saved.append("output/multi_city_analysis.png")
+    plt.savefig('output/analysis.png', dpi=_PNG_DPI, bbox_inches='tight')
+    _saved.append("output/analysis.png")
 if _SAVE_SVG:
-    plt.savefig('output/multi_city_analysis.svg', bbox_inches='tight')
-    _saved.append("output/multi_city_analysis.svg")
+    plt.savefig('output/analysis.svg', bbox_inches='tight')
+    _saved.append("output/analysis.svg")
 if _saved:
     print(f"\n✓ Saved: {', '.join(_saved)}")
 else:

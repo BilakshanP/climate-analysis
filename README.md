@@ -1,4 +1,4 @@
-# Temperature Analysis
+# Climate Analysis
 
 Multi-city temperature and rainfall analysis using daily weather data from the [Open-Meteo Historical Weather API](https://open-meteo.com/en/docs/historical-weather-api). No API key required.
 
@@ -9,7 +9,7 @@ Fetches daily max/min temperature and precipitation for any set of cities, cache
 ```bash
 # Requires Python 3.14+ and uv
 uv sync
-uv run src/multi_city_analysis.py
+uv run src/analysis.py
 ```
 
 On first run, data is fetched from the API and cached as `data/{lat}_{lon}.csv`. Subsequent runs only fetch missing date ranges.
@@ -65,7 +65,7 @@ Cities as columns, stats as rows:
 7. Full Temperature Range (shaded min–max band)
 8. Extreme Heat Days >40°C (5-yr rolling)
 
-Saved to `output/multi_city_analysis.png` and `.svg` (configurable).
+Saved to `output/analysis.png` and `.svg` (configurable).
 
 ## Data Caching
 
