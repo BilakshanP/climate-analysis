@@ -1,4 +1,4 @@
-name: Type Check
+name: CI
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 jobs:
-  typecheck:
+  check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -15,5 +15,7 @@ jobs:
       - uses: astral-sh/setup-uv@v6
 
       - run: uv sync --dev
+
+      - run: uv run ruff format --check src/
 
       - run: uv run basedpyright
