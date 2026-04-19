@@ -339,6 +339,8 @@ ax8.grid(alpha=0.3)
 
 plt.tight_layout(rect=(0, 0, 1, 0.96))
 _saved = []
+if _SAVE_PNG or _SAVE_SVG:
+    os.makedirs("output", exist_ok=True)
 if _SAVE_PNG:
     plt.savefig('output/analysis.png', dpi=_PNG_DPI, bbox_inches='tight')
     _saved.append("output/analysis.png")
